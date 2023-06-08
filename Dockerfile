@@ -1,18 +1,19 @@
-FROM node:14-alpine
+FROM node:18-alpine
 
 RUN apk --no-cache add curl vim
 RUN npm install -g @angular/cli@12.2.6
-USER node
+RUN mkdir /app
+RUN cd /app
 WORKDIR /app
 
 COPY package-lock.json .
 COPY package.json .
-CMD npm i -f
-
+RUN npm i -f
 COPY . .
 
 EXPOSE 4200
-CMD npm start
+# CMD sleep 1000000
+CMD npm run dev
 
 
 ## build docker image

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "nx serve angular-signals --ssl true --ssl-cert ./ssl/localhost.pem --ssl-key ./ssl/localhost-key.pem",
     "build": "nx build",
+    "dev": "nx serve angular-signals --host=0.0.0.0 --port 4200 --hmr",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },
