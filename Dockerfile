@@ -1,13 +1,15 @@
 FROM node:18-alpine
-RUN apk --no-cache add curl vim
-RUN npm install -g @angular/cli@12.2.6
+RUN apk --no-cache add curl vim wget
+RUN npm install -g @angular/cli@16.0
+
+
 RUN mkdir /app
-RUN cd /app
 WORKDIR /app
-COPY package-lock.json .
-COPY package.json .
-RUN npm i -f
+
 COPY . .
+COPY package*.json .
+RUN npm install
+
 EXPOSE 4200
 CMD npm run dev
 # CMD sleep 1000000
@@ -21,3 +23,6 @@ CMD npm run dev
 
 ## test app running
 #  curl http://localhost:4200
+
+## remove build cache
+#  docker builder prune -a
