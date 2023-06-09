@@ -11,7 +11,7 @@ services:
       - "4200"
     restart: on-failure
     container_name: ng-signal
-    # command: "sleep 100000"
+    command: "npm run dev"
     volumes:
       - ./:/app
 #      - ./node_modules:/app/node_modules
